@@ -14,7 +14,6 @@ public class Main {
         int qntd_pessoas = leitura.nextInt();
         for (int i = 1; i <= qntd_pessoas; i++) {
             List<Endereco> enderecos= new ArrayList<>();
-            Pessoa pessoa;
             System.out.println(String.format("\nCadastro de Pessoa [ %s ] - Digite o nome e telefone, respectivamente, separados por ENTER: ", i));
             String nome = leitura.next();
             String telefone = leitura.next();
