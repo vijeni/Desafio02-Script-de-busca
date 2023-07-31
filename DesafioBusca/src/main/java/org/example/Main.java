@@ -17,7 +17,7 @@ public class Main {
             System.out.println(String.format("\nCadastro de Pessoa [ %s ] - Digite o nome e telefone, respectivamente, separados por ENTER: ", i));
             String nome = leitura.next();
             String telefone = leitura.next();
-            System.out.println(String.format("Digite a quantidade de endereços para o cadastro de %s: ", nome));
+            System.out.println(String.format("\nDigite a quantidade de endereços para o cadastro de %s: ", nome));
             int qntd_enderecos = leitura.nextInt();
             for (int j = 1; j <= qntd_enderecos; j++) {
                 System.out.println(String.format("\nEndereço [ %s ] - Digite o logradouro, cidade e estado, respectivamente, separados por ENTER: ", j));
@@ -28,14 +28,23 @@ public class Main {
             }
             pessoas.add(new Pessoa(nome, telefone, enderecos));
         }
+        System.out.println("\nDigite o nome da pessoa que deseja ver informações:");
+        String nomePessoa = leitura.next();
         for (Pessoa pessoa:
                 pessoas) {
-            System.out.println(String.format("- Nome: %s \n- Telefone: %s \n- Endereços:", pessoa.getNome(), pessoa.getTelefone()));
-            for (Endereco end:
-                    pessoa.getEnderecos()) {
-                System.out.println(String.format(" --- %s , %s - %s", end.getLogradouro(), end.getCidade(), end.getEstado()));
+            if(pessoa.getNome().equals(nomePessoa)){
+                System.out.println("\n");
+                System.out.println(String.format("- Nome: %s \n- Telefone: %s \n- Endereços:", pessoa.getNome(), pessoa.getTelefone()));
+                for (Endereco end:
+                        pessoa.getEnderecos()) {
+                    System.out.println(String.format(" --- %s , %s - %s", end.getLogradouro(), end.getCidade(), end.getEstado()));
+                }
+                System.out.println("\n");
+                nomePessoa = "";
             }
-            System.out.println("\n");
+        }
+        if (!nomePessoa.isEmpty()){
+            System.out.println("\nNenhuma pessoa foi encontrada com o nome: " + nomePessoa);
         }
     }
 }
